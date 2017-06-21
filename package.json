@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/andrewmc201/DigitalScribblePad/issues"
   },
-  "homepage": "https://github.com/andrewmc201/DigitalScribblePad#readme"
+  "homepage": "https://github.com/andrewmc201/DigitalScribblePad#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
 }
