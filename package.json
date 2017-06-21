@@ -1,0 +1,20 @@
+{
+  "name": "digitalscribblepad",
+  "version": "1.0.0",
+  "description": "A handy way of storing notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewmc201/DigitalScribblePad.git"
+  },
+  "author": "Andrew McMullen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewmc201/DigitalScribblePad/issues"
+  },
+  "homepage": "https://github.com/andrewmc201/DigitalScribblePad#readme"
+}
