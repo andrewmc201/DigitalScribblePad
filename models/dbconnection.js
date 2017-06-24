@@ -1,15 +1,27 @@
-var mysql = require('mysql');
+var mysql = require('mysql')
+  , async = require('async')
 
-function getConnection(){
-    var con = mysql.createConnection({
-      host: "localhost",
-      user: "mcmullena",
-      password: "vfmiNVWR7OzgnHhG"
-    });
+var PRODUCTION_DB = 'app_prod_database'
 
-    con.connect(function(err) {
-      if (err) throw err;
-      console.log("Connected!");
-    });
-    return con;
+exports.MODE_PRODUCTION = 'mode_production'
+
+var state = {
+  pool: null,
+  mode: null,
+}
+
+exports.connect = function(mode, done) {
+  state.pool = mysql.createPool({
+    host: "localhost",
+    user: "mcmullena",
+    password: "vfmiNVWR7OzgnHhG",
+    database: 'interview2'
+  })
+
+  state.mode = mode
+  done()
+}
+
+exports.get = function() {
+  return state.pool
 }
