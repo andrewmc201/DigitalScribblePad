@@ -1,21 +1,56 @@
 var notesModel = require('../models/notes');
 
-exports.getNoteById = function(noteId){
-    return notesModel.getNoteById(noteId);
+exports.getNoteById = function(noteId, callback){
+    notesModel.getNoteById(noteId, function(err, result){
+        if(err) {
+            callback(err, null);
+        }
+        else {
+            callback(null, result);
+        }
+    });
 };
 
-exports.getAllNotesByUser = function(userId) {
-    return notesModel.getNotesByUser(userId);
+exports.getAllNotesByUser = function(userId, callback) {
+    notesModel.getNotesByUser(userId, function(err, result){
+        if(err) {
+            callback(err, null);
+        }
+        else {
+            callback(null, result);
+        }
+    });
 };
 
-exports.updateNote = function(noteId, noteString){
-    notesModel.updateNote(noteId, noteString);
+exports.updateNote = function(noteId, noteString, callback){
+    notesModel.updateNote(noteId, noteString, function(err, result){
+        if(err) {
+            callback(err, null);
+        }
+        else {
+            callback(null, result);
+        }
+    });
 };
 
-exports.createNote = function(userId, noteString){
-    notesModel.createNote(userId, noteString);
+exports.createNote = function(userId, noteString, callback){
+    notesModel.createNote(userId, noteString, function(err, result){
+        if(err) {
+            callback(err, null);
+        }
+        else {
+            callback(null, result);
+        }
+    });
 };
 
-exports.deleteNote = function(noteId) {
-    notesModel.deleteNote(noteId);
+exports.deleteNote = function(noteId, callback) {
+    notesModel.deleteNote(noteId, function(err, result){
+        if(err) {
+            callback(err, null);
+        }
+        else {
+            callback(null, result);
+        }
+    });
 };

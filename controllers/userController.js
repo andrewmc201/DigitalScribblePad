@@ -3,13 +3,10 @@ var usersModel = require('../models/users');
 exports.getUserIdByUsername = function(username, callback){
     usersModel.getUserIdByUsername(username, function(err, result){
         if(err) {
-            throw err
+            callback(err, null);
         }
         else {
-            if(result.length > 0){
-                callback(null, { 'userId' : result[0].UserId, 'userName' : result[0].UserName, 'lastLogin' : result[0].LastLogin });
-            }
-            callback(null, {});
+            callback(null, { 'userId' : result[0].UserId, 'userName' : result[0].UserName, 'lastLogin' : result[0].LastLogin });
         }
     });
 };
@@ -17,28 +14,37 @@ exports.getUserIdByUsername = function(username, callback){
 exports.addNewUser = function(username, password, callback){
     usersModel.addNewUser(username, password, function(err, result){
         if(err){
-            throw err;
+            callback(err, null);
         } else {
-            if(result.length > 0){
-                callback(null, {'status' :'User successfully added'});
-            }
-            callback(null, {'status' : 'User not added'});
+            callback(null, {'status' :'User successfully added'});
         }
     });
 };
 
 exports.updatePassword = function(newPassword, userId, callback) {
-    return usersModel.updatePassword(newPassword, userId);
+    usersModel.updatePassword(newPassword, userId, function(err, result){
+        if(err) {
+            callback(err, null);
+        } else {
+            callback(null, {'status' : 'Password successfully changed.'});
+        }
+    });
 };
 
 exports.deleteUser = function(userId, callback) {
-    return usersModel.deleteUserById(userId);
+    usersModel.deleteUserById(userId, function(err, result){
+        if(err) {
+            callback(err, null);
+        } else {
+            callback(null, {'status' : 'User successfully deleted.'});
+        }
+    });
 };
 
 exports.getUserById = function(userId, callback) {
     usersModel.getUserById(userId, function(err, result) {
         if(err){
-            throw err;
+            callback(err, null);
         } else {
             if(result.length > 0){
                 callback(null, { 'userId' : result[0].UserId, 'userName' : result[0].UserName, 'lastLogin' : result[0].LastLogin });
