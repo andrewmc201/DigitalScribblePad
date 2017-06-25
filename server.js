@@ -5,8 +5,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var routes = require('./routes/routes');
 var database = require('./models/dbconnection');
-//
-//database.connect();
+var staticroutes = require('./routes/staticroutes');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -28,6 +27,17 @@ app.engine('.hbs', exphbs({
 }))
 app.set('view engine', '.hbs')  
 app.set('views', path.join(__dirname, 'views'))  
+app.use(express.static(__dirname + '/public'));
+staticroutes(app);
+
+app.use(function(req,res){ 
+	res.status(404);  
+	res.render('404'); 
+});
+
+
+
+
 
 database.connect(database.MODE_PRODUCTION, function(err) {
   if (err) {

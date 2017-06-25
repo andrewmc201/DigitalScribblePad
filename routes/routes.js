@@ -58,15 +58,15 @@ module.exports = function(app){
         });
     
     app.route('/api/users')
-//        .get(function(req, res){
-//            userController.getUserIdByUserName(req.body.username, function(err, result){
-//                if(err){
-//                    res.json(err);
-//                } else {
-//                    res.json(result);
-//                }
-//            });
-//        })
+        .get(function(req, res){
+            userController.getUserIdByUserName(req.body.username, function(err, result){
+                if(err){
+                    res.json(err);
+                } else {
+                    res.json(result);
+                }
+            });
+        })
         .post(function(req, res){
             userController.addNewUser(req.body.username, req.body.password, function(err, result){
                 if(err){
@@ -87,15 +87,15 @@ module.exports = function(app){
                 }
             });
         })
-        .put(function(req, res){
-            userController.updatePassword(req.param.userId, req.body.password, function(err, result){
-                if(err){
-                    res.json(err);
-                } else {
-                    res.json(result);
-                }
-            });
-        })
+//        .put(function(req, res){
+//            userController.updatePassword(req.param.userId, req.body.password, function(err, result){
+//                if(err){
+//                    res.json(err);
+//                } else {
+//                    res.json(result);
+//                }
+//            });
+//        })
         .delete(function(req, res){
             userController.deleteUser(req.param.userId, function(err, result){
                 if(err){
@@ -106,7 +106,5 @@ module.exports = function(app){
             });
         });
     
-    app.route('/')
-        .get(function(req, res){homeController.getHomePage()});
 }
 
