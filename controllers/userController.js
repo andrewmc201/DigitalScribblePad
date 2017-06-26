@@ -1,6 +1,6 @@
 var usersModel = require('../models/users');
 
-exports.getUserIdByUsername = function(username, callback){
+exports.getUserIdByUserName = function(username, callback){
     usersModel.getUserIdByUsername(username, function(err, result){
         if(err) {
             callback(err, null);

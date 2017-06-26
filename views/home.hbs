@@ -1,0 +1,29 @@
+<script src="js/custom/home.js"></script>
+<div>
+    <span class="btn btn-default pull-right" id="myAccount">My Account</span>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>Text</tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+            </thead>
+            {{#each notes}}
+            <tr>
+                <td>{{noteContent}}</td>
+                <td>
+                    <button>View</button>
+                </td>
+                <td>
+                    <button>Edit</button>
+                </td>
+                <td>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    <span class="btn btn-primary" id="newScribble">New Scribble</span>
+</div>

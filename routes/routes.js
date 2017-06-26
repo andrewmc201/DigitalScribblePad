@@ -57,16 +57,17 @@ module.exports = function(app){
             });
         });
     
-    app.route('/api/users')
-        .get(function(req, res){
-            userController.getUserIdByUserName(req.body.username, function(err, result){
+    app.route('/api/usernames/:username').get(function(req, res){
+            userController.getUserIdByUserName(req.params.username, function(err, result){
                 if(err){
                     res.json(err);
                 } else {
                     res.json(result);
                 }
             });
-        })
+        });
+    
+    app.route('/api/users')
         .post(function(req, res){
             userController.addNewUser(req.body.username, req.body.password, function(err, result){
                 if(err){
