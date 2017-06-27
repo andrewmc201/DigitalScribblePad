@@ -1,12 +1,10 @@
+<script src="/public/js/custom/editscribble.js"></script>
+<input type="hidden" id="noteId" value="{{noteId}}"/>
 <div>
-    {{#if noteId}}
-        <h1>Edit scribble</h1>
-    {{else}}
-        <h1>New Scribble</h1>
-    {{/if}}
-    
-    <textarea class="form-control col-md-12" maxlength="1024" style="height: 200px;" id="scribbleBody"></textarea>
-    
-    <button class="btn btn-cancel pull-left">Cancel</button>
-    <button class="btn btn-primary pull-right">Save</button>
+    <h1>Edit scribble:</h1>
+    <h4>Last Edit: {{lastEditDate}}</h4>
+    <textarea class="form-control col-md-12" maxlength="1024" style="height: 200px;" id="scribbleBody">{{noteContent}}</textarea>
+    <button class="btn btn-cancel pull-left" id="cancel">Cancel</button>
+    <span class="btn btn-primary pull-right" id="saveEdit">Save</span>
 </div>
+

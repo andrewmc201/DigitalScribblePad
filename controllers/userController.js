@@ -6,27 +6,26 @@ exports.getUserIdByUserName = function(username, callback){
             callback(err, null);
         }
         else {
+            if(result.length < 1 || result[0].UserId === undefined || result[0].UserName === undefined || result[0].LastLogin === undefined){
+                callback(new Error("Username not found"), null);
+                return;
+            }
             callback(null, { 'userId' : result[0].UserId, 'userName' : result[0].UserName, 'lastLogin' : result[0].LastLogin });
         }
     });
 };
 
-exports.addNewUser = function(username, password, callback){
-    usersModel.addNewUser(username, password, function(err, result){
+exports.addNewUser = function(username, callback){
+    usersModel.addNewUser(username, function(err, result){
         if(err){
             callback(err, null);
         } else {
-            callback(null, {'status' :'User successfully added'});
-        }
-    });
-};
-
-exports.updatePassword = function(newPassword, userId, callback) {
-    usersModel.updatePassword(newPassword, userId, function(err, result){
-        if(err) {
-            callback(err, null);
-        } else {
-            callback(null, {'status' : 'Password successfully changed.'});
+            exports.getUserIdByUserName(username, function(err, result){
+                if(err){
+                    callback(err, null);
+                }
+                callback(null, result);
+            })
         }
     });
 };
@@ -36,7 +35,7 @@ exports.deleteUser = function(userId, callback) {
         if(err) {
             callback(err, null);
         } else {
-            callback(null, {'status' : 'User successfully deleted.'});
+            callback(null, result);
         }
     });
 };

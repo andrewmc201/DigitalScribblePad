@@ -69,7 +69,7 @@ module.exports = function(app){
     
     app.route('/api/users')
         .post(function(req, res){
-            userController.addNewUser(req.body.username, req.body.password, function(err, result){
+            userController.addNewUser(req.body.username, function(err, result){
                 if(err){
                     res.json(err);
                 } else {
@@ -88,17 +88,8 @@ module.exports = function(app){
                 }
             });
         })
-//        .put(function(req, res){
-//            userController.updatePassword(req.param.userId, req.body.password, function(err, result){
-//                if(err){
-//                    res.json(err);
-//                } else {
-//                    res.json(result);
-//                }
-//            });
-//        })
         .delete(function(req, res){
-            userController.deleteUser(req.param.userId, function(err, result){
+            userController.deleteUser(req.params.userId, function(err, result){
                 if(err){
                     res.json(err);
                 } else {

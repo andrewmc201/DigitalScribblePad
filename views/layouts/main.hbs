@@ -1,16 +1,25 @@
 <html>
 <head>
     <title>Digital Scribble Pad</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom/cookie.js"></script>
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/bootbox.min.js"></script>
+    <script src="/public/js/custom/cookie.js"></script>
     <script>
         var root = "http://34.204.11.46:12233/";
     </script>
 </head>
+<script type="application/javascript">
+    if((readCookie('userId') == '' || readCookie('userId') === null || readCookie('userId') == undefined) && location.href !== root){
+        location.href = root;
+    }
+</script>
 <body>
     <div class="container">
+        <nav class="navbar navbar-inverse bg-inverse">
+            <label class="navbar-brand">Digital Scribble Pad</label>
+        </nav>
         {{{body}}}    
     </div>    
 </body>

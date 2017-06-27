@@ -1,29 +1,27 @@
-<script src="js/custom/home.js"></script>
+<script src="/public/js/custom/home.js"></script>
 <div>
-    <span class="btn btn-default pull-right" id="myAccount">My Account</span>
-    <div class="table-responsive">
-        <table class="table">
+    <div class="col-md-12">
+        <table class="table table-inverse">
             <thead>
-                <tr>Text</tr>
-                <tr></tr>
-                <tr></tr>
-                <tr></tr>
+                <tr class="col-md-10"><label>Scribble Text</label></tr>
+                <tr class="col-md-1"></tr>
+                <tr class="col-md-1"></tr>
             </thead>
-            {{#each notes}}
-            <tr>
-                <td>{{noteContent}}</td>
-                <td>
-                    <button>View</button>
-                </td>
-                <td>
-                    <button>Edit</button>
-                </td>
-                <td>
-                    <button>Delete</button>
-                </td>
-            </tr>
-            {{/each}}
+            <tbody>
+                {{#each notes}}
+                <tr style="min-height:100px;">
+                    <td><textarea readonly="readonly" class="form-control" style="resize: none;min-height:150px;">{{NoteContent}}</textarea></td>
+                    <td>
+                        <span id="edit_{{NoteId}}" class="btn btn-primary">Edit</span>
+                    </td>
+                    <td>
+                        <span id="delete_{{NoteId}}" class="btn btn-danger">Delete</span>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
         </table>
     </div>
     <span class="btn btn-primary" id="newScribble">New Scribble</span>
+    <span class="btn btn-default pull-right" id="myAccount">My Account</span>
 </div>

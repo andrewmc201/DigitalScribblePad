@@ -24,7 +24,7 @@ var Notes = {
     },
 
     updateNote:function (noteId, noteString, callback){
-        dbconnection.get().query("UPDATE Notes SET NoteContent = " + mysql.escape(noteString) + ", LastEditDate = CURRENT_TIMESTAMP, WHERE NoteId = " + mysql.escape(noteId), function(err, result){
+        dbconnection.get().query("UPDATE Notes SET NoteContent = " + mysql.escape(noteString) + ", LastEditDate = CURRENT_TIMESTAMP WHERE NoteId = " + mysql.escape(noteId), function(err, result){
             if(err){
                 callback(err);
             } 

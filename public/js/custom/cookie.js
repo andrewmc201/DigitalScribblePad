@@ -1,4 +1,4 @@
-//Taken from:
+//Taken from
 //https://stackoverflow.com/a/24103596
 
 function createCookie(name,value,days) {

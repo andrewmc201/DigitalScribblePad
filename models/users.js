@@ -12,8 +12,8 @@ var User = {
         });
     },
 
-    addNewUser: function (username, password, callback){
-        dbconnection.get().query("INSERT INTO Users (UserName, Password) VALUES (" + mysql.escape(username) + ", " + mysql.escape(password) + ")", function(err, result){
+    addNewUser: function (username, callback){
+        dbconnection.get().query("INSERT INTO Users (UserName) VALUES (" + mysql.escape(username) + ")", function(err, result){
             if(err){
                 callback(err);
             } 
@@ -35,7 +35,7 @@ var User = {
     },
 
     deleteUserById: function (userId, callback){
-        dbconnection.get().query("DELETE FROM Users WHERE UserId =" + mysql.escape(userId), function(err, result){
+        dbconnection.get().query("DELETE FROM Users WHERE UserId = " + mysql.escape(userId), function(err, result){
             if(err){
                 callback(err);
             } 

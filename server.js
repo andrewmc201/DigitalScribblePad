@@ -16,10 +16,6 @@ router.get('/api', function(req, res) {
     res.json({message: 'hello world'});
 });
 
-routes(app);
-
-app.use('/api', router);
-
 app.engine('.hbs', exphbs({  
   defaultLayout: 'main',
   extname: '.hbs',
@@ -27,7 +23,10 @@ app.engine('.hbs', exphbs({
 }))
 app.set('view engine', '.hbs')  
 app.set('views', path.join(__dirname, 'views'))  
-app.use(express.static(__dirname + '/public'));
+app.use('/public',express.static(__dirname + '/public'));
+
+routes(app);
+app.use('/api', router);
 staticroutes(app);
 
 app.use(function(req,res){ 
