@@ -1,0 +1,13 @@
+Author: Andrew McMullen
+
+Digital Scribble Pad lets you log in as a temporary user and store notes for a short period of time. 
+It is not intended to be a long-term storage system, instead operating on the same principle as Mailinator.
+Notes are limited to 1024 characters per note maximum.
+
+Api routes:
+'/api/notes/user/:userId' : GET[userId : (desired user id)]
+'/api/notes' : POST[body: {userId : (desired user id), note: (desired note text)}]
+'/api/notes/:noteId' : GET[noteId : (desired note id)], PUT[noteId : (desired note id), note: (desired body for note)], DELETE[noteId : (desired note id to delete)]
+'/api/usernames/:username' : GET[username : (the username you want to get the id for)]
+'/api/users' : POST[username : (the username you want to use to create a new user)]
+'/api/users/:userId' : GET[userId : (the userId you want to retrieve data for)], DELETE[userId : (the user id you want to delete)]
