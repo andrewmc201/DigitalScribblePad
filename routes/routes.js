@@ -18,7 +18,7 @@ module.exports = function(app){
     
     app.route('/api/notes')
         .post(function(req, res){
-            notesController.createNote(req.body.userId, req.body.note, function(err, result){
+            notesController.createNote(req.body.userId, req.body.note.substring(0, Math.min(1024, req.body.note.length)), function(err, result){
                 if(err){
                     res.json(err);
                 } else {
@@ -38,7 +38,7 @@ module.exports = function(app){
             });
         })
         .put(function(req, res){
-            notesController.updateNote(req.params.noteId, req.body.note, function(err, result){
+            notesController.updateNote(req.params.noteId, req.body.note.substring(0, Math.min(1024, req.body.note.length)), function(err, result){
                 if(err){
                     res.json(err);
                 } else {
@@ -57,7 +57,8 @@ module.exports = function(app){
             });
         });
     
-    app.route('/api/usernames/:username').get(function(req, res){
+    app.route('/api/usernames/:username')
+        .get(function(req, res){
             userController.getUserIdByUserName(req.params.username, function(err, result){
                 if(err){
                     res.json(err);
@@ -69,7 +70,7 @@ module.exports = function(app){
     
     app.route('/api/users')
         .post(function(req, res){
-            userController.addNewUser(req.body.username, function(err, result){
+            userController.addNewUser(req.body.username.substring(0, Math.min(255, req.body.username.length)), function(err, result){
                 if(err){
                     res.json(err);
                 } else {
